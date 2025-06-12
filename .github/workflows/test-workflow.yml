@@ -1,0 +1,34 @@
+name: Get Dates for all OSs
+
+on: push
+
+jobs:
+  # This workflow contains a single job called "build"
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get Date Windows
+        run: Get-Date
+  ubuntu:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Get Date Ubuntu
+          run: today = datetime.date.today()
+              print("Today's date is:", today)
+
+  macOS:
+      runs-on: macos-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Get Date Mac
+          run: date
+
+  depends:
+      needs: [windows, macOS, ubuntu]
+      runs-on: windows-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Dependent
+          run: date
