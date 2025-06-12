@@ -15,8 +15,7 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - name: Get Date Ubuntu
-          run: today = datetime.date.today()
-              print("Today's date is:", today)
+          run: date
 
   macOS:
       runs-on: macos-latest
